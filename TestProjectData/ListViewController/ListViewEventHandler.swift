@@ -45,6 +45,7 @@ open class ListViewEventHandler {
                 search.append(testData[index])
             }
         }
+        self.viewController?.selectedTestPackage = search
         self.viewController?.showTestData(testData: search)
     }
     

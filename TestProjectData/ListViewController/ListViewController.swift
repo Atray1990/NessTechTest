@@ -22,6 +22,7 @@ class ListViewController: UIViewController {
     var testPackage: [TestPackage] = []
     var searchText: String?
     var selectedTestPackage: [TestPackage] = []
+    var isSearched: Bool = false
     
     // MARK:- lifeCycle
     override func viewDidLoad() {
@@ -92,8 +93,10 @@ extension ListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count < 3 {
+             isSearched = false
             self.showTestData(testData: testPackage)
         } else {
+            isSearched = true
              eventHandler.searchThroughData(testData: testPackage, searchString: searchText)
         }
     }
@@ -104,7 +107,8 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.moveToCountryScreen(testData: testPackage[indexPath.row])
+         let dataSelected = isSearched ? selectedTestPackage[indexPath.row] : testPackage[indexPath.row]
+            self.moveToCountryScreen(testData: dataSelected)
     }    
 }
 
