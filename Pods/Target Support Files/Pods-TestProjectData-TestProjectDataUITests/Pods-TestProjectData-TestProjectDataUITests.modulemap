@@ -1,0 +1,6 @@
+framework module Pods_TestProjectData_TestProjectDataUITests {
+  umbrella header "Pods-TestProjectData-TestProjectDataUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
